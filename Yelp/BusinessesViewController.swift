@@ -36,14 +36,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         Business.searchWithTerm(term: "Restaurants", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
             self.businesses = businesses
-            if let businesses = businesses {
-                for business in businesses {
-                    print(business.name!)
-                    print(business.address!)
-                }
-            }
             self.tableView.reloadData()
-            
         })
         
         /* Example of Yelp search with more search options specified
@@ -101,19 +94,16 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         filtersViewController.delegate = self
     }
     
-    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
+    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : Any]) {
         let categories = filters["categories"] as? [String] ?? nil
-        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: nil, completion: { (businesses: [Business]?, error: Error?) -> Void in
+        let dealsSelection = filters["deals"] as! Bool
+        let distanceSelection = filters["distance"] as! Int
+        let sortSelection = filters["sort"] as! Int
+        
+        Business.searchWithTerm(term: "Restaurants", sort: YelpSortMode(rawValue: sortSelection), categories: categories, deals: dealsSelection, distance: distanceSelection, completion: { (businesses: [Business]?, error: Error?) -> Void in
             
             self.businesses = businesses
-            if let businesses = businesses {
-                for business in businesses {
-                    print(business.name!)
-                    print(business.address!)
-                }
-            }
             self.tableView.reloadData()
-            
         })
     }
     

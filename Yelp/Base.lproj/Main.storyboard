@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -163,21 +164,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="77" id="aZE-s0-s1p" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="77"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="75" id="aZE-s0-s1p" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aZE-s0-s1p" id="NZC-cD-RG9">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="76.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DFF-sH-08g">
-                                                    <rect key="frame" x="259" y="23" width="51" height="31"/>
+                                                    <rect key="frame" x="259" y="22" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="onSwitchValueChanged:" destination="aZE-s0-s1p" eventType="valueChanged" id="gsX-Ym-8Xw"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3Q-An-0ha">
-                                                    <rect key="frame" x="12" y="28" width="42" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some switch text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3Q-An-0ha">
+                                                    <rect key="frame" x="12" y="27" width="131" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -193,6 +194,42 @@
                                         <connections>
                                             <outlet property="categoryLabel" destination="I3Q-An-0ha" id="H7C-JV-KEL"/>
                                             <outlet property="categorySwitch" destination="DFF-sH-08g" id="lgf-eU-hbb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckboxCell" rowHeight="75" id="wN6-rN-j9T" customClass="CheckboxCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="103" width="320" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wN6-rN-j9T" id="iDM-f2-UYg">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="74.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some bool text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIo-9r-zTb">
+                                                    <rect key="frame" x="12" y="27" width="115" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5B-gH-Op3">
+                                                    <rect key="frame" x="275" y="25" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="RAb-j8-3ob"/>
+                                                        <constraint firstAttribute="height" constant="25" id="hOt-Da-Idx"/>
+                                                    </constraints>
+                                                    <state key="normal" image="checkbox">
+                                                        <color key="titleColor" red="0.1764705926" green="0.49803921579999999" blue="0.75686275960000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VIo-9r-zTb" firstAttribute="centerY" secondItem="iDM-f2-UYg" secondAttribute="centerY" id="FUk-s4-cy4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="v5B-gH-Op3" secondAttribute="trailing" constant="12" id="FeS-vL-fOc"/>
+                                                <constraint firstItem="VIo-9r-zTb" firstAttribute="leading" secondItem="iDM-f2-UYg" secondAttribute="leading" constant="12" id="Uv3-m6-Ptt"/>
+                                                <constraint firstItem="v5B-gH-Op3" firstAttribute="centerY" secondItem="iDM-f2-UYg" secondAttribute="centerY" id="dxw-P1-2cV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkboxButton" destination="v5B-gH-Op3" id="syT-BV-3tZ"/>
+                                            <outlet property="checkboxLabel" destination="VIo-9r-zTb" id="HFj-1f-cXi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -228,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mha-0n-WDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4884" y="351"/>
+            <point key="canvasLocation" x="4882.5" y="350.7042253521127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="INc-j8-2b7">
@@ -267,4 +304,7 @@
             <point key="canvasLocation" x="4050" y="351"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkbox" width="14" height="12"/>
+    </resources>
 </document>
