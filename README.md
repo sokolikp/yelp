@@ -8,16 +8,16 @@ Time spent: 11 hours spent in total
 
 The following **required** functionality is completed:
 
-- [ ] Search results page
+- [X] Search results page
    - [X] Table rows should be dynamic height according to the content height.
    - [X] Custom cells should have the proper Auto Layout constraints.
-   - [ ] Search bar should be in the navigation bar (doesn't have to expand to show location like the real Yelp app does).
-- [ ] Filter page. Unfortunately, not all the filters are supported in the Yelp API.
-   - [ ] The filters you should actually have are: category, sort (best match, distance, highest rated), distance, deals (on/off).
-   - [ ] The filters table should be organized into sections as in the mock.
-   - [ ] You can use the default UISwitch for on/off states.
-   - [ ] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
-   - [ ] Display some of the available Yelp categories (choose any 3-4 that you want).
+   - [X] Search bar should be in the navigation bar (doesn't have to expand to show location like the real Yelp app does).
+- [X] Filter page. Unfortunately, not all the filters are supported in the Yelp API.
+   - [X] The filters you should actually have are: category, sort (best match, distance, highest rated), distance, deals (on/off).
+   - [X] The filters table should be organized into sections as in the mock.
+   - [X] You can use the default UISwitch for on/off states.
+   - [X] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
+   - [X] Display some of the available Yelp categories (choose any 3-4 that you want).
 
 The following **optional** features are implemented:
 
@@ -36,8 +36,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Best practices for organizing data structures (enums?) in a page where a lot of data is tracked by section or key. For instance, I often found myself trying to figure out which section I was in and to do something accordingly. I would also like to know best practices for passing data back and forth that contains string keys (e.g. passing filters data between view controllers) - it felt like bad code hygiene to use string keys in my filters and pass the object back and forth. Using something like enums/constant keys seems like a better way to structure this sort of data. Ideally I have time to go back and clean up some of those bad practices, but I would also like to get to optional features.
+2. Best practices for API calls. How and when to load data asyncronously from multiple sources (e.g. part of a table cell requires data from endpoint A, and another part requires data from endpoint B).
 
 ## Video Walkthrough
 
@@ -49,7 +49,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Data organization and code hygiene was the most difficult aspect of this lab for me. I was moving somewhat slowly because I wanted to to my best to do things in the "Swift" way. I went back and forth on ways to structure my filters data in a way to was intuitive and easy to access from both view controllers. It would be nice to get more familiar with enums and best practices for using constants in these cases.
 
 ## License
 
