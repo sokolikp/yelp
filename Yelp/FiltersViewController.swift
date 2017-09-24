@@ -13,10 +13,10 @@ import UIKit
 }
 
 enum SectionRowIdentifier : String {
-    case Deal = "Deals"
+    case Deal     = "Deals"
     case Distance = "Distance"
     case Category = "Category"
-    case Sort = "Sort by"
+    case Sort     = "Sort by"
 }
 
 class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate {
@@ -25,14 +25,14 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     
     weak var delegate: FiltersViewControllerDelegate?
     
-    var sections: [[String: String]]!
-    var deals: [[String: String]]!
-    var radii: [[String: Any]]!
+    var sections:   [[String: String]]!
+    var deals:      [[String: String]]!
+    var radii:      [[String: Any]]!
     var categories: [[String: String]]!
-    var sorts: [[String: Any]]!
+    var sorts:      [[String: Any]]!
     
     var tableStructure: [[[String: Any]]]!
-    var switches: [[Int: Bool]]! // store switch state for each row
+    var filterStates: [[Int: Bool]]! // store state for each row
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +42,12 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         sorts = getSorts()
         deals = getDeals()
         initSections()
+        setNavbarStyles()
+        setDefaultFilters()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -62,30 +63,34 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (sections[indexPath.section]["type"] == "CheckboxCell") {
-            for idx in switches[indexPath.section].keys {
-                switches[indexPath.section][idx] = false
+        // only need to handle selections for CheckboxCells
+        if (sections[indexPath.section]["type"] == String(describing: CheckboxCell.self)) {
+            
+            // set all values to false and then set selection to true
+            for idx in filterStates[indexPath.section].keys {
+                filterStates[indexPath.section][idx] = false
             }
-            switches[indexPath.section][indexPath.row] = true
+            filterStates[indexPath.section][indexPath.row] = true
             tableView.reloadData()
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 || indexPath.section == 3 {
+        if (sections[indexPath.section]["type"] == String(describing: SwitchCell.self)) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
             let cellData = tableStructure[indexPath.section][indexPath.row]
             cell.categoryLabel.text = cellData["name"] as? String
-            cell.categorySwitch.isOn = switches[indexPath.section][indexPath.row] ?? false
+            cell.categorySwitch.isOn = filterStates[indexPath.section][indexPath.row] ?? false
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.delegate = self
             
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CheckboxCell", for: indexPath) as! CheckboxCell
             let cellData = tableStructure[indexPath.section][indexPath.row]
-            
             cell.checkboxLabel.text = cellData["name"] as? String
-            cell.checkboxButton.isHidden = switches[indexPath.section][indexPath.row] != true
+            cell.checkboxButton.isHidden = filterStates[indexPath.section][indexPath.row] != true
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             
             return cell
         }
@@ -99,12 +104,12 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func onSearchButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         var filters = [String: Any]()
-        var dealsSelection: Bool!
+        var dealsSelection: Bool?
         var distanceSelection: Int!
         var sortSelection: Int!
         var selectedCategories = [String]()
         
-        for (sectionIdx, section) in switches.enumerated() {
+        for (sectionIdx, section) in filterStates.enumerated() {
             for (cellIdx, isOn) in section {
                 if (sectionIdx == 0) { // deals
                     dealsSelection = isOn
@@ -124,8 +129,10 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        filters["deals"] = dealsSelection
-        filters["distance"] = distanceSelection
+        filters["deals"] = dealsSelection ?? false
+        if (distanceSelection != 0) {
+            filters["distance"] = distanceSelection
+        }
         filters["sort"] = sortSelection
         if selectedCategories.count > 0 {
             filters["categories"] = selectedCategories as [String]
@@ -137,34 +144,34 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
         let indexPath = tableView.indexPath(for: switchCell)!
         
-        switches[indexPath.section][indexPath.row] = switchCell.categorySwitch.isOn
+        filterStates[indexPath.section][indexPath.row] = switchCell.categorySwitch.isOn
     }
     
     func initSections() {
         self.sections = [
-            ["name": "Deals", "type": "SwitchCell"],
-            ["name": "Distance", "type": "CheckboxCell"],
-            ["name": "Sort By", "type": "CheckboxCell"],
-            ["name": "Category", "type": "SwitchCell"]
+            ["name": "Deals",    "type": String(describing: SwitchCell.self)],
+            ["name": "Distance", "type": String(describing: CheckboxCell.self)],
+            ["name": "Sort By",  "type": String(describing: CheckboxCell.self)],
+            ["name": "Category", "type": String(describing: SwitchCell.self)]
         ]
         self.tableStructure = [deals, radii, sorts, categories]
-        self.switches = [[Int: Bool]](repeating: [:], count: sections.count)
+        self.filterStates = [[Int: Bool]](repeating: [:], count: sections.count)
     }
     
     func getRadii() -> [[String: Any]] {
         return [
             ["name": "Default", "meters": 0],
-            ["name": "0.5 mi", "meters": 805],
-            ["name": "1 mi", "meters": 1609],
-            ["name": "3 mi", "meters": 4828],
-            ["name": "5 mi", "meters": 8045]
+            ["name": "0.5 mi",  "meters": 805],
+            ["name": "1 mi",    "meters": 1609],
+            ["name": "3 mi",    "meters": 4828],
+            ["name": "5 mi",    "meters": 8045]
         ]
     }
     
     func getSorts() -> [[String: Any]] {
         return [
-            ["name": "Best match", "code": 0],
-            ["name": "Distance", "code": 1],
+            ["name": "Best match",    "code": 0],
+            ["name": "Distance",      "code": 1],
             ["name": "Highest rated", "code": 2],
         ]
     }
@@ -173,6 +180,24 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         return [["name": "Offering a deal"]]
     }
     
+    func setDefaultFilters() {
+        // init only check states to the first element in collection
+        for (idx, section) in sections.enumerated() {
+            if section["type"] == String(describing: CheckboxCell.self) {
+                filterStates[idx][0] = true
+            }
+        }
+    }
+    
+    func setNavbarStyles() {
+        self.navigationController?.navigationBar.barTintColor = UIColor.red
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : Any]
+    }
+    
+    // Hard-coded categories from yelp's API docs.
+    // Downloaded and converted to dictionary.
+    // See all possible categories here: https://www.yelp.com/developers/documentation/v2/all_category_list
     func getCategories() -> [[String: String]] {
         return [
             [ "name": "Afghan", "code": "afghani" ],

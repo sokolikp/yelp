@@ -25,36 +25,27 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
-//        searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.sizeToFit()
-        searchBar.placeholder = "What sounds good?"
+        searchBar.placeholder = "Search"
         navigationItem.titleView = searchBar
         
         navigationController?.navigationBar.barTintColor = UIColor.red
         
-        Business.searchWithTerm(term: "Restaurants", completion: { (businesses: [Business]?, error: Error?) -> Void in
-            
-            self.businesses = businesses
-            self.tableView.reloadData()
-        })
-        
-        /* Example of Yelp search with more search options specified
-         Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
-         self.businesses = businesses
-         
-         for business in businesses {
-         print(business.name!)
-         print(business.address!)
-         }
-         }
-         */
-        
+        performDefaultSearch()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func performDefaultSearch () {
+        Business.searchWithTerm(term: "Restaurants", completion: { (businesses: [Business]?, error: Error?) -> Void in
+            
+            self.businesses = businesses
+            self.tableView.reloadData()
+        })
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -78,6 +69,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell", for: indexPath) as! BusinessCell
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         if searchEnabled {
             cell.business = filteredBusinesses[indexPath.row]
         } else {
@@ -95,9 +87,10 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : Any]) {
+        print(filters)
         let categories = filters["categories"] as? [String] ?? nil
         let dealsSelection = filters["deals"] as! Bool
-        let distanceSelection = filters["distance"] as! Int
+        let distanceSelection = filters["distance"] as? Int ?? nil
         let sortSelection = filters["sort"] as! Int
         
         Business.searchWithTerm(term: "Restaurants", sort: YelpSortMode(rawValue: sortSelection), categories: categories, deals: dealsSelection, distance: distanceSelection, completion: { (businesses: [Business]?, error: Error?) -> Void in
@@ -107,4 +100,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         })
     }
     
+    @IBAction func onClickClear(_ sender: Any) {
+        performDefaultSearch()
+    }
 }
