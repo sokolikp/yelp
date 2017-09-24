@@ -43,7 +43,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://image.ibb.co/gU9BuQ/yelp_results.gif' title='Result' width='' style="dislay:inline"/>    <img src='https://image.ibb.co/gf06Tk/yelp_filters.gif' title='Filters' width='' style="dislay:inline"/>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
