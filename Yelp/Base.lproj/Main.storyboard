@@ -52,9 +52,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="730 Larkin St, Tenderloin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaM-Xr-bPj">
-                                                    <rect key="frame" x="91" y="57" width="221" height="15"/>
+                                                    <rect key="frame" x="91" y="57" width="161" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Thai" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcF-fW-0tq">
                                                     <rect key="frame" x="91" y="80" width="26.5" height="15"/>
@@ -84,6 +85,7 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EcF-fW-0tq" secondAttribute="trailing" constant="12" id="23L-vA-K4S"/>
                                                 <constraint firstItem="DaM-Xr-bPj" firstAttribute="leading" secondItem="odl-Zr-yFI" secondAttribute="trailing" constant="8" id="2vq-qc-xPN"/>
                                                 <constraint firstAttribute="bottom" secondItem="EcF-fW-0tq" secondAttribute="bottom" constant="8" id="3jU-91-wss"/>
                                                 <constraint firstItem="oCT-6R-mj5" firstAttribute="leading" secondItem="odl-Zr-yFI" secondAttribute="trailing" constant="8" id="Bbt-C6-Kit"/>
@@ -100,7 +102,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="YpV-86-BJx" secondAttribute="trailing" constant="8" id="bkw-05-TWj"/>
                                                 <constraint firstItem="sRC-zR-sx8" firstAttribute="leading" secondItem="odl-Zr-yFI" secondAttribute="trailing" constant="8" id="ll5-lD-OZ4"/>
                                                 <constraint firstItem="YpV-86-BJx" firstAttribute="leading" secondItem="sRC-zR-sx8" secondAttribute="trailing" constant="8" id="mOD-1h-lPn"/>
-                                                <constraint firstAttribute="trailing" secondItem="DaM-Xr-bPj" secondAttribute="trailing" constant="8" id="nZc-FU-XOK"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DaM-Xr-bPj" secondAttribute="trailing" constant="8" id="nZc-FU-XOK"/>
                                                 <constraint firstItem="EcF-fW-0tq" firstAttribute="top" secondItem="DaM-Xr-bPj" secondAttribute="bottom" constant="5" id="oVA-wh-xf0"/>
                                                 <constraint firstItem="Irm-p7-Ob0" firstAttribute="centerY" secondItem="oCT-6R-mj5" secondAttribute="centerY" id="raj-Y6-M9c"/>
                                                 <constraint firstItem="odl-Zr-yFI" firstAttribute="leading" secondItem="gRW-ye-EvS" secondAttribute="leading" constant="8" id="xam-pO-y9U"/>
