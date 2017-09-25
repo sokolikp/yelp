@@ -22,6 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0sv-Yl-dtF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="107" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1hd-46-HoA">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -128,7 +131,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0sv-Yl-dtF" secondAttribute="trailing" id="J0D-Yj-p2x"/>
                             <constraint firstItem="VBY-gq-v8E" firstAttribute="top" secondItem="1hd-46-HoA" secondAttribute="bottom" id="SS2-OM-i39"/>
+                            <constraint firstItem="0sv-Yl-dtF" firstAttribute="top" secondItem="XhR-oz-92f" secondAttribute="top" id="TYJ-o0-n1w"/>
+                            <constraint firstItem="0sv-Yl-dtF" firstAttribute="leading" secondItem="XhR-oz-92f" secondAttribute="leading" id="XK5-hE-eY9"/>
+                            <constraint firstAttribute="bottom" secondItem="0sv-Yl-dtF" secondAttribute="bottom" id="cRQ-lP-qMW"/>
                             <constraint firstItem="1hd-46-HoA" firstAttribute="top" secondItem="XhR-oz-92f" secondAttribute="top" id="nrX-KH-ubb"/>
                             <constraint firstAttribute="trailing" secondItem="1hd-46-HoA" secondAttribute="trailing" id="pKF-pA-1eu"/>
                             <constraint firstItem="1hd-46-HoA" firstAttribute="leading" secondItem="XhR-oz-92f" secondAttribute="leading" id="q2d-d4-t2h"/>
@@ -141,15 +148,17 @@
                                 <segue destination="qll-mB-UXs" kind="presentation" id="Ehy-iC-Tcs"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Clear" id="Wyd-T7-kxs">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="Wyd-T7-kxs">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="onClickClear:" destination="2xI-yr-O5N" id="Ngk-6w-7ZN"/>
+                                <action selector="onClickViewSetting:" destination="2xI-yr-O5N" id="nAd-dy-g5Q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapView" destination="0sv-Yl-dtF" id="OC0-eI-lsG"/>
                         <outlet property="tableView" destination="1hd-46-HoA" id="riq-vF-j4c"/>
+                        <outlet property="viewSettingButton" destination="Wyd-T7-kxs" id="aXn-5L-ykI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgb-4b-F1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -218,10 +227,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caret-down" translatesAutoresizingMaskIntoConstraints="NO" id="M6p-ja-Opc">
-                                                    <rect key="frame" x="283" y="13" width="25" height="25"/>
+                                                    <rect key="frame" x="293" y="18" width="15" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="5O8-QY-K0B"/>
-                                                        <constraint firstAttribute="width" constant="25" id="AI4-iI-C7x"/>
+                                                        <constraint firstAttribute="height" constant="15" id="5O8-QY-K0B"/>
+                                                        <constraint firstAttribute="width" constant="15" id="AI4-iI-C7x"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -250,10 +259,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkbox" translatesAutoresizingMaskIntoConstraints="NO" id="zL7-vh-Foj">
-                                                    <rect key="frame" x="283" y="13" width="25" height="25"/>
+                                                    <rect key="frame" x="293" y="18" width="15" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="25" id="aai-d0-mMy"/>
-                                                        <constraint firstAttribute="height" constant="25" id="vBX-4q-WBH"/>
+                                                        <constraint firstAttribute="width" constant="15" id="aai-d0-mMy"/>
+                                                        <constraint firstAttribute="height" constant="15" id="vBX-4q-WBH"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>

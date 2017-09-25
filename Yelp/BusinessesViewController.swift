@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import MapKit
 
 class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIScrollViewDelegate, FiltersViewControllerDelegate {
     
     // MARK: controller variables
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var viewSettingButton: UIBarButtonItem!
     var searchBar: UISearchBar = UISearchBar()
     var searchEnabled: Bool = false
     var businesses: [Business]!
@@ -19,6 +22,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     var isMoreDataLoading: Bool = false
     var loadingMoreView: InfiniteScrollActivityView?
     var offset: Int = 0
+    var isListView: Bool = false
     let PAGE_SIZE = 20
     
     // MARK: lifecycle functions
@@ -29,6 +33,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         // table autolayout settings
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
+        mapView.isHidden = true
         
         searchBar.delegate = self
         searchBar.sizeToFit()
@@ -142,7 +147,49 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         tableView.contentInset = insets
     }
     
+    func goToLocation(location: CLLocation) {
+        let span = MKCoordinateSpanMake(0.1, 0.1)
+        let region = MKCoordinateRegionMake(location.coordinate, span)
+        mapView.setRegion(region, animated: false)
+    }
+    
+    func initMapPins () {
+        for business in businesses {
+            print(business.name!)
+            addAnnotationAtAddress(address: business.address!, title: business.name!)
+        }
+    }
+    
+    func addAnnotationAtAddress(address: String, title: String) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { (placemarks, error) in
+            if let placemarks = placemarks {
+                if placemarks.count != 0 {
+                    let coordinate = placemarks.first!.location!
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate.coordinate
+                    annotation.title = title
+                    self.mapView.addAnnotation(annotation)
+                }
+            }
+        }
+    }
+    
     // MARK: Actions
+    @IBAction func onClickViewSetting(_ sender: Any) {
+        tableView.isHidden = !tableView.isHidden
+        mapView.isHidden = !mapView.isHidden
+        
+        if !mapView.isHidden {
+            viewSettingButton.title = "List"
+            let centerLocation = CLLocation(latitude: 37.7833, longitude: -122.4167)
+            goToLocation(location: centerLocation)
+            initMapPins()
+        } else {
+            viewSettingButton.title = "Map"
+        }
+    }
+    
     @IBAction func onClickClear(_ sender: Any) {
         performDefaultSearch()
     }
