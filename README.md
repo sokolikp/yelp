@@ -2,7 +2,7 @@
 
 **yelp** is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
-Time spent: 14.5 hours spent in total
+Time spent: 16 hours spent in total
 
 ## User Stories
 
@@ -21,9 +21,9 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Search results page
+- [X] Search results page
    - [X] Infinite scroll for restaurant results.
-   - [ ] Implement map view of restaurant results.
+   - [X] Implement map view of restaurant results.
 - [ ] Filter page
    - [ ] Implement a custom switch instead of the default UISwitch.
    - [X] Distance filter should expand as in the real Yelp app
@@ -43,6 +43,10 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+
+<div>Third submission:</div><br>
+
+<img src='http://image.ibb.co/gWrKEQ/yelp_map.gif' title='Result' width='' style="dislay:inline"/>
 
 <div>Second submission:</div><br>
 
