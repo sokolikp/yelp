@@ -60,7 +60,7 @@ Data organization and code hygiene was the most difficult aspect of this lab for
 ## Acknowledgements
 Icons from https://thenounproject.com
 
-Down: By AfterGrind, PH
+Down: By AfterGrind, PH <br>
 Check Mark: By Galaxicon, ID
 
 ## License
