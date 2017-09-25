@@ -57,6 +57,12 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Data organization and code hygiene was the most difficult aspect of this lab for me. I was moving somewhat slowly because I wanted to to my best to do things in the "Swift" way. I went back and forth on ways to structure my filters data in a way to was intuitive and easy to access from both view controllers. It would be nice to get more familiar with enums and best practices for using constants in these cases.
 
+## Acknowledgements
+Icons from https://thenounproject.com
+
+Down: By AfterGrind, PH
+Check Mark: By Galaxicon, ID
+
 ## License
 
     Copyright [2017] [Paul Sokolik]
