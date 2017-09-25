@@ -38,6 +38,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 1. Best practices for organizing data structures (enums?) in a page where a lot of data is tracked by section or key. For instance, I often found myself trying to figure out which section I was in and to do something accordingly. I would also like to know best practices for passing data back and forth that contains string keys (e.g. passing filters data between view controllers) - it felt like bad code hygiene to use string keys in my filters and pass the object back and forth. Using something like enums/constant keys seems like a better way to structure this sort of data. Ideally I have time to go back and clean up some of those bad practices, but I would also like to get to optional features.
 2. Best practices for API calls. How and when to load data asyncronously from multiple sources (e.g. part of a table cell requires data from endpoint A, and another part requires data from endpoint B).
+3. When to embed view controllers in a nav controller and when it is unnecessary.
 
 ## Video Walkthrough
 
