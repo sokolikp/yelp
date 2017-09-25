@@ -21,6 +21,8 @@
 		370EB5BD1F7207130004C369 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370EB5BC1F7207130004C369 /* FiltersViewController.swift */; };
 		371A60971F7748B10065F571 /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A60961F7748B10065F571 /* CheckboxCell.swift */; };
 		371A60991F78818E0065F571 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A60981F78818E0065F571 /* InfiniteScrollActivityView.swift */; };
+		371A609B1F788CE80065F571 /* SeeMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A609A1F788CE80065F571 /* SeeMoreCell.swift */; };
+		376CF3531F78A1BB008FFA4D /* ExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376CF3521F78A1BB008FFA4D /* ExpandCell.swift */; };
 		47848697133B87663A122E3D /* Pods_YelpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1000F3975EB43318C1D4FA /* Pods_YelpTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		370EB5BC1F7207130004C369 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		371A60961F7748B10065F571 /* CheckboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCell.swift; sourceTree = "<group>"; };
 		371A60981F78818E0065F571 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
+		371A609A1F788CE80065F571 /* SeeMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreCell.swift; sourceTree = "<group>"; };
+		376CF3521F78A1BB008FFA4D /* ExpandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCell.swift; sourceTree = "<group>"; };
 		5871D66103F8E8D78915F798 /* Pods-YelpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YelpTests/Pods-YelpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		883322706A784248B16F444A /* Pods-Yelp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yelp/Pods-Yelp.release.xcconfig"; sourceTree = "<group>"; };
 		9B128C050DE78660DE2A8E75 /* Pods-YelpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YelpTests/Pods-YelpTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 				22AAAA9D1AEA1EC600A544AF /* View Controllers */,
 				222D8A5A19CCF9F900D2DB53 /* AppDelegate.swift */,
 				222D8A5E19CCF9F900D2DB53 /* Main.storyboard */,
+				376CF3521F78A1BB008FFA4D /* ExpandCell.swift */,
 				222D8A6119CCF9F900D2DB53 /* Images.xcassets */,
 				222D8A6319CCF9F900D2DB53 /* LaunchScreen.xib */,
 				222D8A5819CCF9F900D2DB53 /* Supporting Files */,
@@ -174,6 +179,7 @@
 				370EB5BA1F72055F0004C369 /* SwitchCell.swift */,
 				371A60981F78818E0065F571 /* InfiniteScrollActivityView.swift */,
 				371A60961F7748B10065F571 /* CheckboxCell.swift */,
+				371A609A1F788CE80065F571 /* SeeMoreCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -417,9 +423,11 @@
 				370EB5B91F71DDE10004C369 /* BusinessCell.swift in Sources */,
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
 				370EB5BD1F7207130004C369 /* FiltersViewController.swift in Sources */,
+				371A609B1F788CE80065F571 /* SeeMoreCell.swift in Sources */,
 				22AAAA991AEA0A9700A544AF /* Business.swift in Sources */,
 				371A60971F7748B10065F571 /* CheckboxCell.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,
+				376CF3531F78A1BB008FFA4D /* ExpandCell.swift in Sources */,
 				222D8A5B19CCF9F900D2DB53 /* AppDelegate.swift in Sources */,
 				370EB5BB1F72055F0004C369 /* SwitchCell.swift in Sources */,
 			);

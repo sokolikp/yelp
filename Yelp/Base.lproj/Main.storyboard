@@ -168,25 +168,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BT4-mj-IVm">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BT4-mj-IVm">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="55" id="aZE-s0-s1p" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="55"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="50" id="aZE-s0-s1p" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aZE-s0-s1p" id="NZC-cD-RG9">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="54.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DFF-sH-08g">
-                                                    <rect key="frame" x="259" y="12" width="51" height="31"/>
+                                                    <rect key="frame" x="259" y="9.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="onSwitchValueChanged:" destination="aZE-s0-s1p" eventType="valueChanged" id="gsX-Ym-8Xw"/>
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some switch text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3Q-An-0ha">
-                                                    <rect key="frame" x="12" y="17" width="131" height="21"/>
+                                                    <rect key="frame" x="12" y="14.5" width="131" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -204,41 +204,90 @@
                                             <outlet property="categorySwitch" destination="DFF-sH-08g" id="lgf-eU-hbb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckboxCell" rowHeight="55" id="wN6-rN-j9T" customClass="CheckboxCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="83" width="320" height="55"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpandCell" id="TS1-54-gky" customClass="ExpandCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="78" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wN6-rN-j9T" id="iDM-f2-UYg">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="54.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TS1-54-gky" id="bLe-vJ-apW">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some bool text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIo-9r-zTb">
-                                                    <rect key="frame" x="12" y="17" width="115" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some bool text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcL-ba-KDo">
+                                                    <rect key="frame" x="20" y="14" width="115" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5B-gH-Op3">
-                                                    <rect key="frame" x="265" y="10" width="35" height="35"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caret-down" translatesAutoresizingMaskIntoConstraints="NO" id="M6p-ja-Opc">
+                                                    <rect key="frame" x="283" y="13" width="25" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="RAb-j8-3ob"/>
-                                                        <constraint firstAttribute="height" constant="35" id="hOt-Da-Idx"/>
+                                                        <constraint firstAttribute="height" constant="25" id="5O8-QY-K0B"/>
+                                                        <constraint firstAttribute="width" constant="25" id="AI4-iI-C7x"/>
                                                     </constraints>
-                                                    <state key="normal" image="checkbox">
-                                                        <color key="titleColor" red="0.1764705926" green="0.49803921579999999" blue="0.75686275960000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                </button>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VIo-9r-zTb" firstAttribute="centerY" secondItem="iDM-f2-UYg" secondAttribute="centerY" id="FUk-s4-cy4"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="v5B-gH-Op3" secondAttribute="trailing" constant="12" id="FeS-vL-fOc"/>
-                                                <constraint firstItem="VIo-9r-zTb" firstAttribute="leading" secondItem="iDM-f2-UYg" secondAttribute="leading" constant="12" id="Uv3-m6-Ptt"/>
-                                                <constraint firstItem="v5B-gH-Op3" firstAttribute="centerY" secondItem="iDM-f2-UYg" secondAttribute="centerY" id="dxw-P1-2cV"/>
+                                                <constraint firstItem="M6p-ja-Opc" firstAttribute="centerY" secondItem="bLe-vJ-apW" secondAttribute="centerY" id="48s-de-VOb"/>
+                                                <constraint firstAttribute="trailing" secondItem="M6p-ja-Opc" secondAttribute="trailing" constant="12" id="s0O-xC-372"/>
+                                                <constraint firstItem="HcL-ba-KDo" firstAttribute="centerY" secondItem="bLe-vJ-apW" secondAttribute="centerY" id="siL-ii-Chd"/>
+                                                <constraint firstItem="HcL-ba-KDo" firstAttribute="leading" secondItem="bLe-vJ-apW" secondAttribute="leadingMargin" constant="12" id="zdf-DL-ke7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="checkboxButton" destination="v5B-gH-Op3" id="syT-BV-3tZ"/>
+                                            <outlet property="dropdownLabel" destination="HcL-ba-KDo" id="g5k-z1-QeU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckboxCell" rowHeight="50" id="wN6-rN-j9T" customClass="CheckboxCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="128" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wN6-rN-j9T" id="iDM-f2-UYg">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some bool text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIo-9r-zTb">
+                                                    <rect key="frame" x="12" y="14.5" width="115" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkbox" translatesAutoresizingMaskIntoConstraints="NO" id="zL7-vh-Foj">
+                                                    <rect key="frame" x="283" y="13" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="aai-d0-mMy"/>
+                                                        <constraint firstAttribute="height" constant="25" id="vBX-4q-WBH"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VIo-9r-zTb" firstAttribute="centerY" secondItem="iDM-f2-UYg" secondAttribute="centerY" id="FUk-s4-cy4"/>
+                                                <constraint firstAttribute="trailing" secondItem="zL7-vh-Foj" secondAttribute="trailing" constant="12" id="Hqj-Qf-hQI"/>
+                                                <constraint firstItem="zL7-vh-Foj" firstAttribute="centerY" secondItem="iDM-f2-UYg" secondAttribute="centerY" id="TnU-nb-7K5"/>
+                                                <constraint firstItem="VIo-9r-zTb" firstAttribute="leading" secondItem="iDM-f2-UYg" secondAttribute="leading" constant="12" id="Uv3-m6-Ptt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkboxImage" destination="zL7-vh-Foj" id="vOA-yW-hPP"/>
                                             <outlet property="checkboxLabel" destination="VIo-9r-zTb" id="HFj-1f-cXi"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SeeMoreCell" rowHeight="50" id="zXv-6d-Hzq" customClass="SeeMoreCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="178" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zXv-6d-Hzq" id="wFd-JB-Ikg">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djV-0n-Yuh">
+                                                    <rect key="frame" x="133.5" y="14.5" width="53" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="djV-0n-Yuh" firstAttribute="centerX" secondItem="wFd-JB-Ikg" secondAttribute="centerX" id="1Y0-II-Rdc"/>
+                                                <constraint firstItem="djV-0n-Yuh" firstAttribute="centerY" secondItem="wFd-JB-Ikg" secondAttribute="centerY" id="Jxv-nl-vsL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -311,10 +360,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBz-Oo-33q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4050" y="351"/>
+            <point key="canvasLocation" x="4076" y="351"/>
         </scene>
     </scenes>
     <resources>
-        <image name="checkbox" width="14" height="12"/>
+        <image name="caret-down" width="35" height="28"/>
+        <image name="checkbox" width="28" height="25"/>
     </resources>
 </document>

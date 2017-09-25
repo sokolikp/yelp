@@ -135,7 +135,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
         loadingMoreView = InfiniteScrollActivityView(frame: frame)
         loadingMoreView!.isHidden = true
-        tableView.addSubview(loadingMoreView!)
+         tableView.tableFooterView = loadingMoreView
         
         var insets = tableView.contentInset
         insets.bottom += InfiniteScrollActivityView.defaultHeight

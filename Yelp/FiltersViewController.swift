@@ -31,6 +31,10 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     var categories: [[String: String]]!
     var sorts:      [[String: Any]]!
     
+    let DEFAULT_CATEGORY_ROW_COUNT: Int = 7
+    var distanceExpanded: Bool = false
+    var sortExpanded: Bool = false
+    var categoriesExpanded: Bool = false
     var tableStructure: [[[String: Any]]]!
     var filterStates: [[Int: Bool]]! // store state for each row
     
@@ -59,42 +63,95 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableStructure[section].count
+        switch section {
+        case 1:
+            if !distanceExpanded {
+                return 1
+            } else {
+                return tableStructure[section].count
+            }
+        case 2:
+            if !sortExpanded {
+                return 1
+            } else {
+                return tableStructure[section].count
+            }
+        case 3:
+            if !categoriesExpanded {
+                return DEFAULT_CATEGORY_ROW_COUNT
+            } else {
+                return tableStructure[section].count
+            }
+        default:
+            return tableStructure[section].count
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // only need to handle selections for CheckboxCells
-        if (sections[indexPath.section]["type"] == String(describing: CheckboxCell.self)) {
-            
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.reuseIdentifier == "CheckboxCell" {
             // set all values to false and then set selection to true
             for idx in filterStates[indexPath.section].keys {
                 filterStates[indexPath.section][idx] = false
             }
             filterStates[indexPath.section][indexPath.row] = true
+            if (indexPath.section == 1) {
+                distanceExpanded = false
+            } else {
+                sortExpanded = false
+            }
+            tableView.reloadData()
+        } else if  cell?.reuseIdentifier == "SeeMoreCell" {
+            categoriesExpanded = true
+            tableView.reloadData()
+        } else if  cell?.reuseIdentifier == "ExpandCell" {
+            if (indexPath.section == 1) {
+                distanceExpanded = true
+            } else {
+                sortExpanded = true
+            }
             tableView.reloadData()
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (sections[indexPath.section]["type"] == String(describing: SwitchCell.self)) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
-            let cellData = tableStructure[indexPath.section][indexPath.row]
-            cell.categoryLabel.text = cellData["name"] as? String
-            cell.categorySwitch.isOn = filterStates[indexPath.section][indexPath.row] ?? false
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
-            cell.delegate = self
-            
-            return cell
+            if (!categoriesExpanded && indexPath.section == 3 && indexPath.row == DEFAULT_CATEGORY_ROW_COUNT - 1) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "SeeMoreCell", for: indexPath) as! SeeMoreCell
+                return cell
+            } else {
+
+                let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
+                let cellData = tableStructure[indexPath.section][indexPath.row]
+                cell.categoryLabel.text = cellData["name"] as? String
+                cell.categorySwitch.isOn = filterStates[indexPath.section][indexPath.row] ?? false
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.delegate = self
+                
+                return cell
+            }
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CheckboxCell", for: indexPath) as! CheckboxCell
-            let cellData = tableStructure[indexPath.section][indexPath.row]
-            cell.checkboxLabel.text = cellData["name"] as? String
-            cell.checkboxButton.isHidden = filterStates[indexPath.section][indexPath.row] != true
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
-            
-            return cell
+            if (indexPath.section == 1 && !distanceExpanded || indexPath.section == 2 && !sortExpanded) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ExpandCell", for: indexPath) as! ExpandCell
+                var selectedCellIdx: Int!
+                for idx in filterStates[indexPath.section].keys {
+                    if (filterStates[indexPath.section][idx])! {
+                        selectedCellIdx = idx
+                    }
+                }
+                let cellData = tableStructure[indexPath.section][selectedCellIdx]
+                cell.dropdownLabel.text = cellData["name"] as? String
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CheckboxCell", for: indexPath) as! CheckboxCell
+                let cellData = tableStructure[indexPath.section][indexPath.row]
+                cell.checkboxLabel.text = cellData["name"] as? String
+                cell.checkboxImage.isHidden = filterStates[indexPath.section][indexPath.row] != true
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                return cell
+            }
         }
- 
     }
     
     @IBAction func onCancelButton(_ sender: Any) {
