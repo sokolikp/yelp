@@ -43,10 +43,12 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-Second submission:
+<div>Second submission:</div><br>
+
 <img src='http://image.ibb.co/ms7njQ/yelp_results.gif' title='Result' width='' style="dislay:inline"/>    <img src='http://image.ibb.co/kf3hJk/yelp_filters.gif' title='Filters' width='' style="dislay:inline"/>
 
-First submission:
+<div>First submission:</div><br>
+
 <img src='https://image.ibb.co/gU9BuQ/yelp_results.gif' title='Result' width='' style="dislay:inline"/>    <img src='https://image.ibb.co/gf06Tk/yelp_filters.gif' title='Filters' width='' style="dislay:inline"/>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
